@@ -1,3 +1,4 @@
+@props(['title'])
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,19 +17,21 @@
     <link rel="stylesheet" href="{{ asset('frontend/css/animate.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/jquery.exzoom.css') }}">
 
+    <link rel="stylesheet" href="{{ asset('frontend/css/toastr.min.css') }}">
+
     <link rel="stylesheet" href="{{ asset('frontend/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/responsive.css') }}">
     <!-- <link rel="stylesheet" href="css/rtl.css"> -->
 </head>
 
 <body>
-    @include('frontend.layouts.partials.topbar')
-    @include('frontend.layouts.partials.nav')
-    @include('frontend.layouts.partials.menu-cart')
-    @include('frontend.layouts.partials.reservation')
-    @yield('content')
-    @include('frontend.layouts.partials.footer')
-    @include('frontend.layouts.partials.go-to-top')
+    @include('layouts.frontend.includes.topbar')
+    @include('layouts.frontend.includes.nav')
+    @include('layouts.frontend.includes.menu-cart')
+    @include('layouts.frontend.includes.reservation')
+    {{ $slot }}
+    @include('layouts.frontend.includes.footer')
+    @include('layouts.frontend.includes.go-to-top')
 
     <!--jquery library js-->
     <script src="{{ asset('frontend/js/jquery-3.6.0.min.js') }}"></script>
@@ -58,6 +61,41 @@
 
     <!--main/custom js-->
     <script src="{{ asset('frontend/js/main.js') }}"></script>
+
+    {{-- toastr --}}
+    <script src="{{ asset('frontend/js/toastr.min.js') }}"></script>
+
+    <script>
+        toastr.options.progressBar = true;
+        // toastr.options.rtl = true;
+        toastr.options.preventDuplicates = true;
+        // toastr.options.showEasing = 'swing';
+        toastr.options.closeButton = true;
+        toastr.options.escapeHtml = true;
+
+
+        @if ($errors->any())
+            @foreach ($errors->all() as $error)
+                toastr.error("{{ $error }}")
+            @endforeach
+        @endif
+
+        // Set csrf at ajax header
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        $(document).ready(function() {
+            $('.button-click').click();
+        })
+    </script>
+
+    <!-- Load global js -->
+    {{-- @include('frontend.layouts.partials.global-scripts') --}}
+
+    @stack('scripts')
 
 </body>
 

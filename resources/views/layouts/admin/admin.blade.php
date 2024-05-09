@@ -1,3 +1,4 @@
+@props(['title', 'header'])
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,10 +12,12 @@
     <link rel="stylesheet" href="{{ asset('admin/assets/modules/fontawesome/css/all.min.css') }}">
 
     <!-- CSS Libraries -->
-
+    <link rel="stylesheet" href="{{ asset('admin/assets/css/toastr.min.css') }}">
     <!-- Template CSS -->
     <link rel="stylesheet" href="{{ asset('admin/assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/assets/css/components.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('admin/assets/css/toastr.min.css') }}">
     <!-- Start GA -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
     {{-- <script>
@@ -35,9 +38,9 @@
         <div class="main-wrapper main-wrapper-1">
             <div class="navbar-bg"></div>
             {{-- navbar --}}
-            @include('admin.layouts.partials.nav')
+            @include('layouts.admin.includes.nav')
             {{-- sidebar --}}
-            @include('admin.layouts.partials.sidebar')
+            @include('layouts.admin.includes.sidebar')
 
             <!-- Main Content -->
             <div class="main-content">
@@ -47,12 +50,12 @@
                             <h1>{{ $header }}</h1>
                         </div>
                     @endif
-                    @yield('content')
+                    {{ $slot }}
                 </section>
             </div>
 
             {{-- Footer --}}
-            @include('admin.layouts.partials.footer')
+            @include('layouts.admin.includes.footer')
         </div>
     </div>
 
@@ -72,6 +75,32 @@
     <!-- Template JS File -->
     <script src="{{ asset('admin/assets/js/scripts.js') }}"></script>
     <script src="{{ asset('admin/assets/js/custom.js') }}"></script>
+
+    {{-- toastr --}}
+    <script src="{{ asset('admin/assets/js/toastr.min.js') }}"></script>
+    <script>
+        toastr.options.progressBar = true;
+        // toastr.options.rtl = true;
+        toastr.options.preventDuplicates = true;
+        // toastr.options.showEasing = 'swing';
+        toastr.options.closeButton = true;
+        toastr.options.escapeHtml = true;
+
+
+        @if ($errors->any())
+            @foreach ($errors->all() as $error)
+                toastr.error("{{ $error }}")
+            @endforeach
+        @endif
+
+        // Set csrf at ajax header
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+    </script>
+
 </body>
 
 </html>
