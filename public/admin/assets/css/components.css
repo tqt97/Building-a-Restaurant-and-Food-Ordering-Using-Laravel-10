@@ -750,13 +750,13 @@ tr:first-child > td > .fc-day-grid-event {
 
 /* 1.17 Profile */
 .profile-widget {
-  margin-top: 35px;
+  /* margin-top: 35px; */
 }
 .profile-widget .profile-widget-picture {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.03);
   float: left;
   width: 100px;
-  margin: -35px -5px 0 30px;
+  margin: -35px -5px 0 calc(50% - 50px);
   position: relative;
   z-index: 1;
 }

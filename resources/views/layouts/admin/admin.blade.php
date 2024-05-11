@@ -5,6 +5,8 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="description" content="Admin Panel">
     <title>{{ $title ?? config('app.name') }} | Admin Panel</title>
 
     <!-- General CSS Files -->
@@ -19,7 +21,7 @@
 
     <link rel="stylesheet" href="{{ asset('admin/assets/css/toastr.min.css') }}">
     <!-- Start GA -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
+    {{-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script> --}}
     {{-- <script>
         window.dataLayer = window.dataLayer || [];
 
@@ -31,6 +33,7 @@
         gtag('config', 'UA-94034622-3');
     </script> --}}
     <!-- /END GA -->
+    @stack('css')
 </head>
 
 <body>
@@ -49,6 +52,13 @@
                         <div class="section-header">
                             <h1>{{ $header }}</h1>
                         </div>
+                        {{-- <h1>Profile</h1>
+                        <div class="section-header-breadcrumb">
+                            <div class="breadcrumb-item active">
+                                <a href="#">Dashboard</a>
+                            </div>
+                            <div class="breadcrumb-item">Profile</div>
+                        </div> --}}
                     @endif
                     {{ $slot }}
                 </section>
@@ -84,7 +94,7 @@
         toastr.options.preventDuplicates = true;
         // toastr.options.showEasing = 'swing';
         toastr.options.closeButton = true;
-        toastr.options.escapeHtml = true;
+        // toastr.options.escapeHtml = true;
 
 
         @if ($errors->any())
@@ -100,7 +110,7 @@
             }
         });
     </script>
-
+    @stack('scripts')
 </body>
 
 </html>

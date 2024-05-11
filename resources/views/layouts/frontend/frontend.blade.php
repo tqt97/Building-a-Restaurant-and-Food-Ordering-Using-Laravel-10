@@ -6,6 +6,21 @@
     <meta charset="UTF-8">
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, target-densityDpi=device-dpi" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="Food Ordering And Reservation">
+    <meta name="keywords" content="Food Ordering And Reservation">
+    <meta name="author" content="Food Ordering And Reservation">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow">
+    <meta name="bingbot" content="index, follow">
+    <meta name="referrer" content="always">
+    <meta name="rating" content="general">
+    <meta name="distribution" content="global">
+    <meta name="revisit-after" content="7 days">
+    <meta name="language" content="English">
+    <meta name="generator" content="Food Ordering And Reservation">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ $title ?? config('app.name') }} | Food Ordering And Reservation</title>
     <link rel="icon" type="image/png" href="{{ asset('frontend/images/favicon.png') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/all.min.css') }}">
