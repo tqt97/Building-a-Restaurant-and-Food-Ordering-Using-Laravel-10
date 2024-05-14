@@ -10,9 +10,12 @@ use Illuminate\Support\Facades\Password;
 use Illuminate\Auth\Events\PasswordReset;
 use App\Http\Requests\Admin\ProfileRequest;
 use App\Http\Requests\Admin\PasswordRequest;
+use App\Traits\UploadFileTrait;
 
 class ProfileController extends Controller
 {
+    use UploadFileTrait;
+
     public function index()
     {
         return view('profile.admin.index');
@@ -58,16 +61,12 @@ class ProfileController extends Controller
         ]);
 
         $user = auth()->user();
-
-        if ($request->hasFile('avatar')) {
-            $image = $request->file('avatar');
-            $version = Str::random(10);
-            $imageName = 'avatar-' . $version . '.' . $image->getClientOriginalExtension();
-            $image->move(public_path('uploads/images/avatar'), $imageName);
-            $user->avatar = $imageName;
+        $imagePath = $this->uploadImage($request, 'avatar', 'images/avatar','avatar');
+        if($imagePath){
+            $user->avatar = $imagePath;
             $user->save();
         }else{
-            return redirect()->back()->withErrors(['avatar' => 'The provided file is not an image']);
+            return redirect()->back()->withErrors(['avatar' => 'The image is empty or not an image file']);
         }
 
         return redirect()->back()->with('success', 'Avatar updated successfully');

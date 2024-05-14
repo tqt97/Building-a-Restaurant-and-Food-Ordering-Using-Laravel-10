@@ -54,7 +54,7 @@
             <div class="col-12 col-md-12 col-lg-4">
                 <div class="card card-primary profile-widget">
                     <div class="profile-widget-header">
-                        <img alt="avatar" src="{{ asset('uploads/images/avatar/'.auth()->user()->avatar) }}"
+                        <img alt="avatar" src="{{ asset(auth()->user()->avatar) }}"
                             class="rounded-circle profile-widget-picture" />
                     </div>
                     <div class="card-footer  row">
