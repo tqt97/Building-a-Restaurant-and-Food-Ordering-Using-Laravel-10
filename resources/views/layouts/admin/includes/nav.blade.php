@@ -36,22 +36,22 @@
                 </div>
                 <div class="search-item">
                     <a href="#">
-                        <img class="mr-3 rounded" width="30" src="{{ asset('admin/assets/img/products/product-3-50.png') }}"
-                            alt="product">
+                        <img class="mr-3 rounded" width="30"
+                            src="{{ asset('admin/assets/img/products/product-3-50.png') }}" alt="product">
                         oPhone S9 Limited Edition
                     </a>
                 </div>
                 <div class="search-item">
                     <a href="#">
-                        <img class="mr-3 rounded" width="30" src="{{ asset('admin/assets/img/products/product-3-50.png') }}"
-                            alt="product">
+                        <img class="mr-3 rounded" width="30"
+                            src="{{ asset('admin/assets/img/products/product-3-50.png') }}" alt="product">
                         Drone X2 New Gen-7
                     </a>
                 </div>
                 <div class="search-item">
                     <a href="#">
-                        <img class="mr-3 rounded" width="30" src="{{ asset('admin/assets/img/products/product-3-50.png') }}"
-                            alt="product">
+                        <img class="mr-3 rounded" width="30"
+                            src="{{ asset('admin/assets/img/products/product-3-50.png') }}" alt="product">
                         Headphone Blitz
                     </a>
                 </div>
@@ -222,9 +222,17 @@
                     <i class="fas fa-cog"></i> Settings
                 </a>
                 <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item has-icon text-danger">
+                {{-- <a href="#" class="dropdown-item has-icon text-danger">
                     <i class="fas fa-sign-out-alt"></i> Logout
-                </a>
+                </a> --}}
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <a class="dropdown-item has-icon text-danger" href="{{route('logout')}"
+                        onclick="event.preventDefault();
+                                        this.closest('form').submit();">
+                        Log Out
+                    </a>
+                </form>
             </div>
         </li>
     </ul>
