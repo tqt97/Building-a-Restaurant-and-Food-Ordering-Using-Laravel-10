@@ -1,6 +1,4 @@
-@extends('frontend.layouts.master', ['title' => 'Home'])
-
-@section('content')
+<x-frontend-layout title="Home page">
     <x-frontend.banner />
     <x-frontend.why-choose />
     <x-frontend.offer-item />
@@ -12,4 +10,4 @@
     <x-frontend.testimonial />
     <x-frontend.counter />
     <x-frontend.blog />
-@endsection
+</x-frontend-layout>

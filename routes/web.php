@@ -17,8 +17,34 @@ use App\Http\Controllers\Admin\Auth\LoginController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('frontend.home');
 });
+Route::get('/about', function () {
+    return view('frontend.about');
+});
+Route::get('/blog', function () {
+    return view('frontend.blog.index');
+});
+Route::get('/blog-detail', function () {
+    return view('frontend.blog.show');
+});
+
+Route::get('/contact', function () {
+    return view('frontend.contact');
+});
+
+Route::get('/cart-view', function () {
+    return view('frontend.cart.index');
+});
+
+Route::get('/checkout', function () {
+    return view('frontend.checkout.index');
+});
+
+Route::get('/search', function () {
+    return view('frontend.search');
+});
+
 
 // Route::get('/admin/login', [LoginController::class, 'showLoginForm'])->name('admin.login');
 Route::group(['middleware' => 'guest'], function () {

@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg main_menu">
     <div class="container">
-        <a class="navbar-brand" href="index.html">
+        <a class="navbar-brand" href="/">
             <img src="{{ asset('frontend/images/logo.png') }}" alt="{{ config('app.name') }}" class="img-fluid">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -10,12 +10,12 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav m-auto">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                    <a class="nav-link active" aria-current="page" href="/">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="about.html">about</a>
+                    <a class="nav-link" href="/about">about</a>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link" href="menu.html">menu</a>
                 </li>
                 <li class="nav-item">
@@ -39,12 +39,12 @@
                         <li><a href="privacy_policy.html">privacy policy</a></li>
                         <li><a href="terms_condition.html">terms and condition</a></li>
                     </ul>
+                </li> --}}
+                <li class="nav-item">
+                    <a class="nav-link" href="/blog">blog</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="blogs.html">blog</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="contact.html">contact</a>
+                    <a class="nav-link" href="/contact">contact</a>
                 </li>
             </ul>
             <ul class="menu_icon d-flex flex-wrap">

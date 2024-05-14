@@ -70,7 +70,7 @@
             </li>
         </ul>
         <p class="subtotal">sub total <span>$1220.00</span></p>
-        <a class="cart_view" href="cart_view.html"> view cart</a>
-        <a class="checkout" href="check_out.html">checkout</a>
+        <a class="cart_view" href="/cart-view"> view cart</a>
+        <a class="checkout" href="/checkout">checkout</a>
     </div>
 </div>

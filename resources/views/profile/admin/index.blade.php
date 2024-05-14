@@ -54,29 +54,26 @@
             <div class="col-12 col-md-12 col-lg-4">
                 <div class="card card-primary profile-widget">
                     <div class="profile-widget-header">
-                        <img alt="avatar" src="{{ asset('admin/assets/img/avatar/avatar-1.png') }}"
+                        <img alt="avatar" src="{{ asset('uploads/images/avatar/'.auth()->user()->avatar) }}"
                             class="rounded-circle profile-widget-picture" />
                     </div>
-                    <div class="card-footer">
-                        <div class="form-group">
-                            <div class="input-group">
-                                <form action="" enctype="multipart/form-data" class="form-inline">
-                                    <div class="card1">
-                                        <div class="col-12">
-                                            <span class="input-group-btn">
-                                                <span class="btn btn-default btn-file">
-                                                    {{ __('Upload here') }}
-                                                    <input type="file" id="avatar" name="avatar">
-                                                </span>
+                    <div class="card-footer  row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <form method="POST" action="{{ route('admin.avatar.update') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    @method('PUT')
+                                    <div class="input-group">
+                                        <span class="input-group-btn">
+                                            <span class="btn btn-default btn-file">
+                                                Browse… <input type="file" id="avatar" name="avatar">
                                             </span>
-                                            <input type="text" class="form-control" readonly>
-                                        </div>
-                                        <div class="col-12 my-2"><img id="img-upload" /></div>
-                                        <div class="col-12 mt-2">
-                                            <button type="submit" class="btn btn-primary">
-                                                {{ __('Upload Image') }}
-                                            </button>
-                                        </div>
+                                        </span>
+                                        <input type="text" class="form-control" readonly>
+                                    </div>
+                                    <img id="img-upload" class="my-2"/>
+                                    <div>
+                                        <button type="submit" class="btn btn-primary">Upload</button>
                                     </div>
                                 </form>
                             </div>

@@ -22,7 +22,7 @@ class PasswordRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'current_password' => ['required', 'string', 'min:8'],
+            'current_password' => ['required', 'string', 'min:8','current_password'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ];
     }
